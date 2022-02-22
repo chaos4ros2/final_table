@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Row } from "../components/Row";
 import { Banner } from "../components/Banner";
 import { Nav } from "../components/Nav";
+import { CountryCard } from "../components/CountryCard";
 import { requests } from "../requests/request";
 // import "../styles/Row.module.scss";
 
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
     <div className="App">
       <Nav />
       <Banner />
+      <CountryCard />
         <Row
           title="NETFLIX ORIGUINALS"
           fetchUrl={requests.JapanRecipe.url}
