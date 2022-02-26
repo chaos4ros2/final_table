@@ -33,6 +33,18 @@
             transform: scale(1.08);
         }
     }
+
+    animation: row infinite linear 20s;
+
+    @keyframes row {
+        0% {
+            transform: translateX(100%);
+        }
+    
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 }
 
 .Card {
@@ -85,4 +97,6 @@
         }
     }
 
+
 }
+

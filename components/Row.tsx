@@ -36,7 +36,7 @@ export const Row = ({ title, fetchUrl }: Props) => {
                 <div>Retrieving Luke Skywalker Information ...</div>
             ) : (
                 <div className={styles['Row-menus']}>
-                <h2>{title}</h2>    
+                {/* <h2>{title}</h2>     */}
                 {/* ポスターコンテンツ */}
                 {data.data.result.map((recipe, i) => (
                     <section className={styles['Card']}>

@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <Banner />
       <CountryCard />
         <Row
-          title="NETFLIX ORIGUINALS"
+          title="Food Genre"
           fetchUrl={requests.JapanRecipe.url}
           isLargeRow
         />
