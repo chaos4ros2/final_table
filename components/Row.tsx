@@ -26,7 +26,7 @@ const img_class = classNames(
 export const Row = ({ title, fetchUrl }: Props) => {
     const { isLoading, error, data } = useQuery('fetchLuke', () =>
     axios(fetchUrl));
-        
+    // console.log(data.data.result);
     return(
         
         <div className={styles['Row']}>
@@ -43,7 +43,7 @@ export const Row = ({ title, fetchUrl }: Props) => {
                         <img
                             key={i} // todo：recipeUrlの最後の番号にする https://recipe.rakuten.co.jp/recipe/1950012560/
                             className={img_class}
-                            src={recipe.mediumImageUrl} // foodImageUrl
+                            src={recipe.foodImageUrl} // mediumImageUrl(ちいさいサイズ)
                             alt={recipe.recipeId}
                         />
                         <div className={styles['card-content']}>
