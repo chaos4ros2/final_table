@@ -46,13 +46,12 @@ export const Row = ({ title, fetchUrl }: Props) => {
                             src={recipe.foodImageUrl} // mediumImageUrl(ちいさいサイズ)
                             alt={recipe.recipeId}
                         />
-                        <div className={styles['card-content']}>
-                            <h1 className={styles['card-title']}>Webクリエイターボックス</h1>
-                            <p className={styles['card-text']}>WebデザインやWebサイト制作、最新のWeb業界情報などを紹介していくサイト。</p>
+                        <div className={styles['Card-content']}>
+                            <h4 className={styles['Card-title']}>{recipe.recipeTitle}</h4>
+                            <p className={styles['Card-text']}>{recipe.recipeCost}</p>
                         </div>
-                        <div className={styles['card-link']}>
-                            <a href="http://webcreatorbox.com/about">About</a>
-                            <a href="http://webcreatorbox.com/">Website</a>
+                        <div className={styles['Card-link']}>
+                            <a href={recipe.recipeUrl}>Website</a>
                         </div>
                     </section>
                 ))}

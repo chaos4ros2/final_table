@@ -50,26 +50,29 @@
     }
 
     &-content {
-        padding: 20px;   
+        padding: 14px;   
     }
 
     &-title {
-        font-size: 20px;
+        font-size: 13px;
         margin-bottom: 20px;
         text-align: center;
-        color: #333;
+        color: #111;
+        margin: 0;
     }
 
     &-text {
         color: #777;
-        font-size: 14px;
+        font-size: 15px;
         line-height: 1.5;
+        text-align: center;
+        margin: 10px 10px 0 10px;
     }
 
     &-link {
         text-align: center;
         border-top: 1px solid #eee;
-        padding: 20px;
+        padding: 5px;
 
         & a {
             text-decoration: none;
