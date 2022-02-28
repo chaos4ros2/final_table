@@ -21,6 +21,7 @@ const Home: NextPage = () => {
         <Row
           title="Food Genre"
           fetchUrl={requests.JapanRecipe.url}
+          categoryUrl={requests.JapanRecipeCategory.url}
           isLargeRow
         />
         {/* <Row title="Top Rated" fetchUrl={requests.JapanRecipe.url} />
