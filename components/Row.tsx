@@ -25,21 +25,38 @@ const img_class = classNames(
 )
 
 export const Row = ({ title, fetchUrl, categoryId }: Props) => {
-    const { isLoading, error, data } = useQuery('fetchLuke', () =>
-    axios(`${fetchUrl}&categoryId=${categoryId}`));
-    console.log(`${fetchUrl}&categoryId=${categoryId}`);
+    // let { isLoading, error, data } = useQuery('fetchLuke', () =>
+    // axios(`${fetchUrl}&categoryId=${categoryId}`));
+    // console.log(data);
+    let data = {};
+    const data1 = useQuery('data1', () =>
+    axios(`${fetchUrl}&categoryId=${categoryId[0]}`));
+
+    const data2 = useQuery('data2', () =>
+    axios(`${fetchUrl}&categoryId=${categoryId[1]}`));
+
+    
+    
+    if (data1.isLoading || data2.isLoading) {
+
+    } else {
+        console.log(data1.data?.data.result, data2.data?.data.result);
+        data = data1.data.data.result.concat(data2.data.data.result); 
+    }
+    // data = Object.assign(data1.data, data2.data);
+    console.log(data);
     return(
         
         <div className={styles['Row']}>
-            {error && <div>Something went wrong ...</div>}
+            {/* {error && <div>Something went wrong ...</div>} */}
             
-            {isLoading ? (
+            {data1.isLoading || data2.isLoading ? (
                 <div>Retrieving Luke Skywalker Information ...</div>
             ) : (
                 <div className={styles['Row-menus']}>
                 {/* <h2>{title}</h2>     */}
                 {/* ポスターコンテンツ */}
-                {data.data.result.map((recipe, i) => (
+                {data.map((recipe, i) => (
                     <section className={styles['Card']}>
                         <img
                             key={i} // todo：recipeUrlの最後の番号にする https://recipe.rakuten.co.jp/recipe/1950012560/

@@ -25,9 +25,12 @@ export async function getStaticProps() {
       }
   }
 
+  const category_id = [];
   // ランダムのカテゴリを取得する
-  const category_id = category_arry[Math.floor(Math.random() * category_arry.length)];
+  category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
+  category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
 
+  console.log(category_id);
   return {
     props: {
       category_id
@@ -36,7 +39,7 @@ export async function getStaticProps() {
 }
 
 export type Categorys = {
-    category_id:string
+    category_id:number[]
 }
 
 // https://zenn.dev/ifhito/articles/7d345bb8d03024
