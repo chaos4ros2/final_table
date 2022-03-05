@@ -53,9 +53,16 @@
     @-webkit-keyframes row {
         0% {
             -webkit-transform: translateX(100%);
+            -webkit-perspective: 1000;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
+
         }
         100% {
             -webkit-transform: translateX(-100%);
+            -webkit-perspective: 1000;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translateZ(0);
         }
     }
 
