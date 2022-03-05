@@ -35,7 +35,9 @@
         }
     }
 
-    animation: row 30s infinite linear ;
+    // https://irokoto.co.jp/blog/20201228/post-17#4_animation-delay
+    will-change:row; 
+    animation: row 30s infinite linear;
     -webkit-animation: row 30s infinite linear;
     -moz-animation: row 30s infinite linear;
     -o-animation: row 30s infinite linear;
