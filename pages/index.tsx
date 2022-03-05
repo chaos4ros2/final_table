@@ -12,7 +12,7 @@ import { requests } from "../requests/request";
 
 // Todo：ユーザーハンドラーでこのメソッドにパラメーターを渡す方法
 // 全部わたしたらええやん、コンポーネント内でしぼればいい！
-export async function getStaticProps() {
+export async function getServerSideProps() {
   // const category_id = getCategoryId();
   const category_arry = [];
   const regex = /category\/(.*?)\//;
