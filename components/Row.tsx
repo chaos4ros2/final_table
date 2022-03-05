@@ -53,9 +53,8 @@ export const Row = ({ title, fetchUrl, categoryId }: Props) => {
                 {/* <h2>{title}</h2>     */}
                 {/* ポスターコンテンツ */}
                 {data.map((recipe, i) => (
-                    <section className={styles['Card']}>
+                    <section className={styles['Card']} key={i}>
                         <img
-                            key={i} // todo：recipeUrlの最後の番号にする https://recipe.rakuten.co.jp/recipe/1950012560/
                             className={img_class}
                             src={recipe.foodImageUrl} // mediumImageUrl(ちいさいサイズ)
                             alt={recipe.recipeId}
