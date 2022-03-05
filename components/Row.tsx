@@ -33,7 +33,8 @@ export const Row = ({ title, fetchUrl, categoryId }: Props) => {
     
     if (isSuccess) {
         queries_data.map((result, i) => {
-            result.data.data.result.map((menu) => {
+            // https://qiita.com/uhyo/items/0e7821ce494024c98da5#1-4-%E9%85%8D%E5%88%97%E3%81%AE%E5%9E%8B
+            result.data.data.result.map((menu: any[]) => {
                 data.push(menu);
             })
             
