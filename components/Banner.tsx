@@ -49,8 +49,8 @@ export const Banner = () => {
               {movie?.title || movie?.name || movie?.orignal_name}
             </h1>
             <div className={styles['Banner-buttons']}>
-              <button className={styles['Banner-button']}>Play</button>
-              <button className={styles['Banner-button']}>My List</button>
+              {/* <button className={styles['Banner-button']}>Play</button>
+              <button className={styles['Banner-button']}>My List</button> */}
             </div>
     
             <h1 className={styles['Banner-description']}>{truncate(movie?.overview, 150)}</h1>

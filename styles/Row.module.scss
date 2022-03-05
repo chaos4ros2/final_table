@@ -3,6 +3,7 @@
     color: #fff;
     position: relative;
     bottom: 234px;
+    width: fit-content;
 
     &-menus {
         display: flex;
@@ -34,7 +35,7 @@
         }
     }
 
-    animation: row infinite linear 20s;
+    animation: row infinite linear 30s;
 
     @keyframes row {
         0% {
@@ -48,7 +49,7 @@
 }
 
 .Card {
-    margin: 30px auto;
+    margin: 30px 10px;
     width: 200px;
     background: #fff;
     border-radius: 5px;
@@ -62,7 +63,8 @@
     }
 
     &-content {
-        padding: 14px;   
+        padding: 14px;  
+        height: 37%; 
     }
 
     &-title {
@@ -71,6 +73,7 @@
         text-align: center;
         color: #111;
         margin: 0;
+        height: 60%;
     }
 
     &-text {

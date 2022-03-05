@@ -10,6 +10,8 @@ import { CountryCard } from "../components/CountryCard";
 import { requests } from "../requests/request";
 // import "../styles/Row.module.scss";
 
+// Todo：ユーザーハンドラーでこのメソッドにパラメーターを渡す方法
+// 全部わたしたらええやん、コンポーネント内でしぼればいい！
 export async function getStaticProps() {
   // const category_id = getCategoryId();
   const category_arry = [];
@@ -26,11 +28,13 @@ export async function getStaticProps() {
   }
 
   const category_id = [];
+  const loop_count = 2;
   // ランダムのカテゴリを取得する
-  category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
-  category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
-
+  for (let i = 0; i < loop_count; i++) {
+    category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
+  }
   console.log(category_id);
+  
   return {
     props: {
       category_id
@@ -39,7 +43,7 @@ export async function getStaticProps() {
 }
 
 export type Categorys = {
-    category_id:number[]
+    category_id:string[]
 }
 
 // https://zenn.dev/ifhito/articles/7d345bb8d03024

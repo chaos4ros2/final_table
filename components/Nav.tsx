@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from "../styles/Nav.module.scss";
+import styles from '../styles/Nav.module.scss';
 
 type Props = {
     className?: string;
@@ -16,25 +16,29 @@ export const Nav = (props: Props) => {
             }
         };
 
-        window.addEventListener("scroll", handleShow);
+        window.addEventListener('scroll', handleShow);
         // 副作用クリーンアップ
         return () => {
-            window.removeEventListener("scroll", handleShow);
+            window.removeEventListener('scroll', handleShow);
         };
     }, []);
 
     return (
         <div className={`${styles.Nav} ${show && styles['Nav-black']}`}>
-            <img
-                className={styles['Nav-logo']}
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png"
-                alt="Netflix Logo"
-            />
-            <img
-                className={styles['Nav-avater']}
-                src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-                alt="Avatar"
-            />
+            <a href='https://www.netflix.com/title/80201866' target='_blank'>
+                <img
+                    className={styles['Nav-logo']}
+                    src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png'
+                    alt='Netflix Logo'
+                />
+            </a>
+            <a href='https://www.youtube.com/watch?v=m8gpzke_BTE' target='_blank'>
+                <img
+                    className={styles['Nav-avater']}
+                    src='https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png'
+                    alt='Avatar'
+                />
+            </a>
         </div>
     );
 };
