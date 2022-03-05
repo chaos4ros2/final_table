@@ -1,5 +1,5 @@
 .Row {
-    margin-left: 20px;
+    margin-transform: 20px;
     color: #fff;
     position: relative;
     bottom: 234px;
@@ -35,13 +35,43 @@
         }
     }
 
-    animation: row infinite linear 30s;
+    animation: row 30s infinite linear ;
+    -webkit-animation: row 30s infinite linear;
+    -moz-animation: row 30s infinite linear;
+    -o-animation: row 30s infinite linear;
 
     @keyframes row {
         0% {
             transform: translateX(100%);
         }
     
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @-webkit-keyframes row {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @-moz-keyframes row {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes row {
+        0% {
+            transform: translateX(100%);
+        }
         100% {
             transform: translateX(-100%);
         }
