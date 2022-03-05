@@ -1,4 +1,4 @@
-import {useQuery} from 'react-query';
+import {useQuery, useQueries} from 'react-query';
 import axios from 'axios';
 import styles from "../styles/Row.module.scss";
 import classNames from 'classnames'
@@ -6,17 +6,8 @@ import classNames from 'classnames'
 type Props = {
     title: string;
     fetchUrl: string;
-    categoryId: string;
+    categoryId: string[];
     isLargeRow?: boolean;
-};
-
-type Recipe = {
-    id: string;
-    name: string;
-    title: string;
-    original_name: string;
-    menu_path: string;
-    backdrop_path: string;
 };
 
 const img_class = classNames(
@@ -25,33 +16,37 @@ const img_class = classNames(
 )
 
 export const Row = ({ title, fetchUrl, categoryId }: Props) => {
-    // let { isLoading, error, data } = useQuery('fetchLuke', () =>
-    // axios(`${fetchUrl}&categoryId=${categoryId}`));
-    // console.log(data);
-    let data = {};
-    const data1 = useQuery('data1', () =>
-    axios(`${fetchUrl}&categoryId=${categoryId[0]}`));
+    let queries_data: any[] = [];
+    let data: any[] = [];
 
-    const data2 = useQuery('data2', () =>
-    axios(`${fetchUrl}&categoryId=${categoryId[1]}`));
+    queries_data = useQueries(
+        categoryId.map(category_id => {
+            return {
+                queryKey: ['category', category_id],
+                queryFn: () => axios(`${fetchUrl}&categoryId=${category_id}`)
+            }
+        })
+    )
 
+    const isLoading = queries_data.some(query => query.isLoading);
+    const isSuccess = queries_data.every(query => query.isSuccess === true);
     
-    
-    if (data1.isLoading || data2.isLoading) {
-
-    } else {
-        console.log(data1.data?.data.result, data2.data?.data.result);
-        data = data1.data.data.result.concat(data2.data.data.result); 
+    if (isSuccess) {
+        queries_data.map((result, i) => {
+            result.data.data.result.map((menu) => {
+                data.push(menu);
+            })
+            
+        })
     }
-    // data = Object.assign(data1.data, data2.data);
-    console.log(data);
+    
     return(
         
         <div className={styles['Row']}>
             {/* {error && <div>Something went wrong ...</div>} */}
             
-            {data1.isLoading || data2.isLoading ? (
-                <div>Retrieving Luke Skywalker Information ...</div>
+            {isLoading ? (
+                <div>Retrieving Recipe Information ...</div>
             ) : (
                 <div className={styles['Row-menus']}>
                 {/* <h2>{title}</h2>     */}
@@ -69,7 +64,7 @@ export const Row = ({ title, fetchUrl, categoryId }: Props) => {
                             <p className={styles['Card-text']}>{recipe.recipeCost}</p>
                         </div>
                         <div className={styles['Card-link']}>
-                            <a href={recipe.recipeUrl}>Website</a>
+                            <a href={recipe.recipeUrl} target='_blank'>Website</a>
                         </div>
                     </section>
                 ))}
