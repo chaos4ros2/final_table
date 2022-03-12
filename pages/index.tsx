@@ -14,16 +14,19 @@ import { requests } from "../requests/request";
 // 全部わたしたらええやん、コンポーネント内でしぼればいい！
 export async function getServerSideProps() {
   // const category_id = getCategoryId();
-  const category_arry = [];
+  const category_obj = {};
+  
   const regex = /category\/(.*?)\//;
   // ランダム抽選するカテゴリの配列を作成する
   const res = await fetch(requests.JapanRecipeCategory.url);
   const categorys = await res.json();
-
+  console.log(categorys?.result);
   // https://qiita.com/kerupani129/items/6bb14acb2213179156a2#2-%E5%88%86%E5%89%B2%E4%BB%A3%E5%85%A5%E5%9E%8B-forin-%E9%9D%9E%E6%8E%A8%E5%A5%A8
   for (const key in categorys?.result) { // ★
       for (const count in categorys?.result[key]) {
-          category_arry.push(categorys?.result[key][count].categoryUrl.match(regex)[1]);
+          category_obj[count] = {};
+          category_obj[count]['name'] = categorys?.result[key][count].categoryName;
+          category_obj[count]['url'] = categorys?.result[key][count].categoryUrl.match(regex)[1];
       }
   }
 
@@ -31,10 +34,9 @@ export async function getServerSideProps() {
   const loop_count = 2;
   // ランダムのカテゴリを取得する
   for (let i = 0; i < loop_count; i++) {
-    category_id.push(category_arry[Math.floor(Math.random() * category_arry.length)]);
+    category_id.push(category_obj[Math.floor(Math.random() * Object.keys(category_obj).length)].url);
   }
-  console.log(category_id);
-  
+
   return {
     props: {
       category_id
@@ -43,7 +45,7 @@ export async function getServerSideProps() {
 }
 
 export type Categorys = {
-    category_id:string[]
+    category_id:string[];
 }
 
 // https://zenn.dev/ifhito/articles/7d345bb8d03024
@@ -59,12 +61,6 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
           categoryId={category_id}
           isLargeRow
         />
-        {/* <Row title="Top Rated" fetchUrl={requests.JapanRecipe.url} />
-        <Row title="Action Movies" fetchUrl={requests.JapanRecipe.url} />
-        <Row title="Comedy Movies" fetchUrl={requests.JapanRecipe.url} />
-        <Row title="Horror Movies" fetchUrl={requests.JapanRecipe.url} />
-        <Row title="Romance Movies" fetchUrl={requests.JapanRecipe.url} />
-        <Row title="DOcumentaries" fetchUrl={requests.JapanRecipe.url} /> */}
     </div>
   );
 }
