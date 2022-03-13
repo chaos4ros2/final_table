@@ -15,32 +15,35 @@ const img_class = classNames(
     styles['Card-img'],
 )
 
-export const Row = ({ title, fetchUrl, categoryId }: Props) => {
+export const RowDe = ({ title, fetchUrl, categoryId }: Props) => {
     let queries_data: any[] = [];
     let data: any[] = [];
-    
+
     queries_data = useQueries(
         categoryId.map(category_id => {
             return {
-                queryKey: ['category', category_id],
-                queryFn: () => axios(`${fetchUrl}&categoryId=${category_id}`)
+                queryKey: ['category_de', category_id],
+                queryFn: () => axios(`${fetchUrl}?orderBy=7&limit=8`)
             }
         })
     )
 
+    console.log(queries_data);
     const isLoading = queries_data.some(query => query.isLoading);
     const isSuccess = queries_data.every(query => query.isSuccess === true);
     
     if (isSuccess) {
         queries_data.map((result, i) => {
             // https://qiita.com/uhyo/items/0e7821ce494024c98da5#1-4-%E9%85%8D%E5%88%97%E3%81%AE%E5%9E%8B
-            result.data.data.result.map((menu: any[]) => {
+            result.result.map((menu: any[]) => {
                 data.push(menu);
             })
             
         })
     }
     
+    console.log(data);
+
     return(
         
         <div className={styles['Row']}>

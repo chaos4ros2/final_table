@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 // Todo:APi専用処理ファイルに移る
 import { Row } from "../components/Row";
+import { RowDe } from "../components/RowDe";
 import { Banner } from "../components/Banner";
 import { Nav } from "../components/Nav";
 import { CountryCard } from "../components/CountryCard";
@@ -15,12 +16,12 @@ import { requests } from "../requests/request";
 export async function getServerSideProps() {
   // const category_id = getCategoryId();
   const category_obj = {};
-  
+
   const regex = /category\/(.*?)\//;
   // ランダム抽選するカテゴリの配列を作成する
   const res = await fetch(requests.JapanRecipeCategory.url);
   const categorys = await res.json();
-  console.log(categorys?.result);
+  // console.log(categorys?.result);
   // https://qiita.com/kerupani129/items/6bb14acb2213179156a2#2-%E5%88%86%E5%89%B2%E4%BB%A3%E5%85%A5%E5%9E%8B-forin-%E9%9D%9E%E6%8E%A8%E5%A5%A8
   for (const key in categorys?.result) { // ★
       for (const count in categorys?.result[key]) {
@@ -58,6 +59,13 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
         <Row
           title="Food Genre"
           fetchUrl={requests.JapanRecipe.url}
+          categoryId={category_id}
+          isLargeRow
+        />
+        <CountryCard />
+        <RowDe
+          title="Food Genre"
+          fetchUrl={requests.GermanyRecipe.url}
           categoryId={category_id}
           isLargeRow
         />
