@@ -62,13 +62,13 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
           categoryId={category_id}
           isLargeRow
         />
-        <CountryCard />
+        {/* <CountryCard />
         <RowDe
           title="Food Genre"
           fetchUrl={requests.GermanyRecipe.url}
           categoryId={category_id}
           isLargeRow
-        />
+        /> */}
     </div>
   );
 }
