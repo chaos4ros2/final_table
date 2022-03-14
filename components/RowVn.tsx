@@ -31,18 +31,17 @@ export const RowVn = ({ title, fetchUrl, categoryId }: Props) => {
 
     const isLoading = queries_data.some(query => query.isLoading);
     const isSuccess = queries_data.every(query => query.isSuccess === true);
-    console.log(queries_data);
+
     if (isSuccess) {
         queries_data.map((result, i) => {
             // https://qiita.com/uhyo/items/0e7821ce494024c98da5#1-4-%E9%85%8D%E5%88%97%E3%81%AE%E5%9E%8B
-            result.data.data.hits.map((menu: any[]) => {
-                console.log(menu);
+            result.data.data.hits.map((menu: any) => {
                 data.push(menu.recipe);
             })
             
         })
     }
-    console.log(data);
+
     return(
         
         <div className={styles['Row']}>
