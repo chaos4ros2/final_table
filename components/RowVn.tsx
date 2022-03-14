@@ -65,7 +65,7 @@ export const RowVn = ({ title, fetchUrl, categoryId }: Props) => {
                             <p className={styles['Card-text']}>{recipe.mealType[0]}</p>
                         </div>
                         <div className={styles['Card-link']}>
-                            <a href={recipe.url} target='_blank' rel='noreferrer'>Website</a>
+                            <a href={recipe.url} target='_blank' rel='noreferrer'>Recipe</a>
                         </div>
                     </section>
                 ))}

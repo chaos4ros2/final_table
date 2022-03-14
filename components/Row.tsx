@@ -64,7 +64,7 @@ export const Row = ({ title, fetchUrl, categoryId }: Props) => {
                             <p className={styles['Card-text']}>{recipe.recipeCost}</p>
                         </div>
                         <div className={styles['Card-link']}>
-                            <a href={recipe.recipeUrl} target='_blank' rel='noreferrer'>Website</a>
+                            <a href={recipe.recipeUrl} target='_blank' rel='noreferrer'>レシピ</a>
                         </div>
                     </section>
                 ))}
