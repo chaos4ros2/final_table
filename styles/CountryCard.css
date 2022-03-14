@@ -1,14 +1,14 @@
 .card {
-    position: relative;
+    position: absolute;
     /* width: 508px; */
-    width: 100%; /* 仕様変更 2/24 */
+    width: 105%; /* 仕様変更 2/24 */
     height: 300px;
     transform-style: preserve-3d;
     perspective: 500px;
 }
 .card .face {
     position: absolute;
-    top: 100px;
+    top: 35px;
     left: 0;
     width: 100%;
     height: 100%;
