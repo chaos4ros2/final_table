@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 // Todo:APi専用処理ファイルに移る
 import { Row } from "../components/Row";
 import { RowDe } from "../components/RowDe";
+import { RowVn } from "../components/RowVn";
 import { Banner } from "../components/Banner";
 import { Nav } from "../components/Nav";
 import { CountryCard } from "../components/CountryCard";
@@ -32,7 +33,7 @@ export async function getServerSideProps() {
   }
 
   const category_id = [];
-  const loop_count = 2;
+  const loop_count = 3;
   // ランダムのカテゴリを取得する
   for (let i = 0; i < loop_count; i++) {
     category_id.push(category_obj[Math.floor(Math.random() * Object.keys(category_obj).length)].url);
@@ -55,20 +56,20 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
     <div className="App">
       <Nav />
       <Banner />
-      <CountryCard />
+      <CountryCard flagUrl='https://illustcut.com/box/world/asiaflag/asiaflag02_09.png' countryName='Japan' />
         <Row
           title="Food Genre"
           fetchUrl={requests.JapanRecipe.url}
           categoryId={category_id}
           isLargeRow
         />
-        {/* <CountryCard />
-        <RowDe
+        <CountryCard flagUrl='https://m.media-amazon.com/images/I/21U+d7Iu3bL._AC_.jpg' countryName='Vietnam'/>
+        <RowVn
           title="Food Genre"
-          fetchUrl={requests.GermanyRecipe.url}
-          categoryId={category_id}
+          fetchUrl={requests.VietnamRecipe.url}
+          categoryId={['0']}
           isLargeRow
-        /> */}
+        />
     </div>
   );
 }

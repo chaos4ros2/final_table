@@ -8,4 +8,7 @@ export const requests = {
     GermanyRecipe: {
         url: 'https://api.chefkoch.de/v2/recipes',
     },
+    VietnamRecipe: {
+        url: 'https://api.edamam.com/api/recipes/v2?type=public&q=vietnamese&app_id=301ba8fc&app_key=a045b2496178d878c3817d9b3cbb2623&random=true',
+    },
 };
