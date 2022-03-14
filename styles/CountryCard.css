@@ -1,7 +1,7 @@
 .card {
     position: absolute;
     /* width: 508px; */
-    width: 105%; /* 仕様変更 2/24 */
+    width: 100%; /* 仕様変更 2/24 */
     height: 300px;
     transform-style: preserve-3d;
     perspective: 500px;
