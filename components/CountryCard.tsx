@@ -16,15 +16,6 @@ export const CountryCard = ({ flagUrl, countryName }: Props) => {
                 <h5 className="valid"><span> <br /> </span><span></span></h5>
                 <h5 className="card-holder"></h5>
             </div>
-            {/* <div className="face back">
-                <div className="blackbar"></div>
-                <div className="cvvtext">
-                    <div className="white-bar"></div>
-                    <div className="cvv"></div>
-                </div>
-                <p className="text">
-                </p>
-            </div> */}
         </div>
     );
 };

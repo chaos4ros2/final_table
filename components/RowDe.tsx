@@ -59,7 +59,7 @@ export const RowDe = ({ title, fetchUrl, categoryId }: Props) => {
                     <section className={styles['Card']} key={i}>
                         <img
                             className={img_class}
-                            src={recipe.foodImageUrl} // mediumImageUrl(ちいさいサイズ)
+                            src={recipe.foodImageUrl}
                             alt={recipe.recipeId}
                         />
                         <div className={styles['Card-content']}>
