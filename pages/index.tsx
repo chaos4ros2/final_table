@@ -56,14 +56,14 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
     <div className="App">
       <Nav />
       <Banner />
-      <CountryCard flagUrl='https://illustcut.com/box/world/asiaflag/asiaflag02_09.png' countryName='Japan' />
+      <CountryCard flagUrl='/flags/jp.svg' countryName='Japan' />
         <Row
           title="Food Genre"
           fetchUrl={requests.JapanRecipe.url}
           categoryId={category_id}
           isLargeRow
         />
-        <CountryCard flagUrl='https://m.media-amazon.com/images/I/21U+d7Iu3bL._AC_.jpg' countryName='Vietnam'/>
+        <CountryCard flagUrl='/flags/vn.svg' countryName='Vietnam'/>
         <RowVn
           title="Food Genre"
           fetchUrl={requests.VietnamRecipe.url}
