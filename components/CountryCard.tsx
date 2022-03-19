@@ -1,4 +1,6 @@
 
+import Image from 'next/image'
+
 // https://css.glass/
 type Props = {
     flagUrl: string;

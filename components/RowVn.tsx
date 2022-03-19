@@ -59,6 +59,8 @@ export const RowVn = ({ title, fetchUrl, categoryId }: Props) => {
                             className={img_class}
                             src={recipe.image} // mediumImageUrl(ちいさいサイズ)
                             alt={recipe.recipeId}
+                            width={200}
+                            height={130}
                         />
                         <div className={styles['Card-content']}>
                             <h4 className={styles['Card-title']}>{recipe.label}</h4>
