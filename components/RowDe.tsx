@@ -16,7 +16,7 @@ const img_class = classNames(
 export const RowDe = ({ title, de_recipe_obj }: Props) => {
     let data: any[] = [];
 
-    de_recipe_obj.map((result, i) => {
+    de_recipe_obj.map((result: any) => {
         result.recipe.previewImageUrlTemplate = result.recipe.previewImageUrlTemplate.replace('<format>', 'crop-480x320');
         // 画像ある項目のみ表示
         if (result.recipe.previewImageUrlTemplate) 

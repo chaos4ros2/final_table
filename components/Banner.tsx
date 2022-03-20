@@ -13,27 +13,6 @@ type movieProps = {
 };
 
 export const Banner = () => {
-    const [movie, setMovie] = useState<movieProps>({});
-    useEffect(() => {
-        async function fetchData() {
-            const request = await axios.get(requests.JapanRecipe.url);
-            console.log(request.data.result);
-
-            //apiからランダムで値を取得している
-
-            return request;
-        }
-        fetchData();
-    }, []);
-    console.log(movie);
-    
-    // descriptionの切り捨てよう関数
-    function truncate(str: any, n: number) {
-        // undefinedを弾く
-        if (str !== undefined) {
-            return str.length > n ? str?.substr(0, n - 1) + "..." : str;
-        }
-    }
 
     return (
         <header
@@ -45,15 +24,10 @@ export const Banner = () => {
           }}
         >
           <div className={styles['Banner-contents']}>
-            <h1 className="banner-title">
-              {movie?.title || movie?.name || movie?.orignal_name}
-            </h1>
             <div className={styles['Banner-buttons']}>
               {/* <button className={styles['Banner-button']}>Play</button>
               <button className={styles['Banner-button']}>My List</button> */}
             </div>
-    
-            <h1 className={styles['Banner-description']}>{truncate(movie?.overview, 150)}</h1>
           </div>
     
           <div className={styles['Banner-fadeBottom']} />
