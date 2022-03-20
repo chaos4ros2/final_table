@@ -39,19 +39,26 @@ export async function getServerSideProps() {
     category_id.push(category_obj[Math.floor(Math.random() * Object.keys(category_obj).length)].url);
   }
 
+  // クロスオリジン解消のためレンダリング前にデータをドイツ語のメニューを取得する
+  const res_de = await fetch(requests.GermanyRecipe.url);
+  const de_recipe = await res_de.json();
+  const de_recipe_obj = de_recipe.results;
+
   return {
     props: {
-      category_id
+      category_id,
+      de_recipe_obj,
     }
   }
 }
 
 export type Categorys = {
     category_id:string[];
+    de_recipe_obj:any;
 }
 
 // https://zenn.dev/ifhito/articles/7d345bb8d03024
-const Home: NextPage<Categorys> = ({category_id}: Categorys) => {  
+const Home: NextPage<Categorys> = ({category_id, de_recipe_obj}: Categorys) => {  
   return (
     <div className="App">
       <Nav />
@@ -63,13 +70,18 @@ const Home: NextPage<Categorys> = ({category_id}: Categorys) => {
           categoryId={category_id}
           isLargeRow
         />
-        <CountryCard flagUrl='/flags/vn.svg' countryName='Vietnam'/>
+      <CountryCard flagUrl='/flags/vn.svg' countryName='Vietnam' />
         <RowVn
           title="Food Genre"
           fetchUrl={requests.VietnamRecipe.url}
           categoryId={['0']}
           isLargeRow
-        />
+      />
+      <CountryCard flagUrl='/flags/de.svg' countryName='Germany' />
+        <RowDe
+          title="Food Genre"
+          de_recipe_obj={de_recipe_obj}
+      />
     </div>
   );
 }
